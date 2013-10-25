@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: silvana
+Build-Jdk: 1.6.0_35
+Build-Host: 
+Build-Java: 1.6.0_35
+Build-Label: 1.0-SNAPSHOT
+Build-Maven: Maven 3.0.4
+Build-OS: Linux
+Build-Time: 20131025-1449
+Build-User: silvana
+
