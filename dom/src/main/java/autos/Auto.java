@@ -15,6 +15,7 @@ import org.apache.isis.applib.annotation.DescribedAs;
 
 import org.apache.isis.applib.annotation.Hidden;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.Programmatic;
 
 import org.apache.isis.applib.annotation.ObjectType;
 import org.apache.isis.applib.annotation.RegEx;
@@ -23,6 +24,7 @@ import org.apache.isis.applib.util.TitleBuffer;
 
 import org.apache.isis.applib.annotation.Named;
 
+import autos.AutoStateFactory.Estado;
 import categoria.Categoria;
 
 import com.google.common.base.Objects;
@@ -48,13 +50,18 @@ public class Auto {
 	public static enum TipoCombustible {
 		NAFTA, DIESEL; 
 	}
-	public static enum Estado {
-		ALQUILADO, LIBRE, AVERIADO; 
-	}
+//	public static enum Estado {
+//		ALQUILADO, LIBRE, AVERIADO; 
+//	}
 	public static enum Seguro{
 		LA_SEGUNDA, MAPFRE, LA_PATRONAL, LA_CAJA, ZURICH; 
 	}	
 	
+	public Auto()
+	{
+		setEstado(Estado.LIBRE);
+		container.informUser("El auto se cargo en estado {0}"+getEstado().getClass().getSimpleName());
+	}
 	@Named("Dominio")
 	// {{ Identification on the UI	
 	public String title() {
@@ -195,17 +202,27 @@ public class Auto {
  	}  	
  	// }}
  	
+ 	
+ 	//------------------------------------------------------------------
+ 	
+ 	 
+ 	private IEstado estado;
  	// {{ Estado de Alquiler
-  	private Estado estado;
-  	@DescribedAs("Señala el estado actual del vehiculo.")
-  	@RegEx(validation = "\\w[@&:\\-\\,\\.\\+ \\w]*")
-  	@MemberOrder(sequence="9")
-  	public Estado getEstado(){
-  		return estado; 
-  	}  	
-  	public void setEstado(Estado estado) {
-  		this.estado=estado; 
-  	}   	
+ 	@Programmatic
+ 	public IEstado getEstado() {
+		return estado;
+	}
+ 	@Programmatic
+	public void setEstado(IEstado estado) {
+		this.estado = estado;
+	}
+ 	@Programmatic
+	public void setEstado(Estado estado) {
+		System.out.println(this.estado);
+		this.estado = AutoStateFactory.buildState(estado, this);
+		System.out.println("Despues del builder "+this.estado);
+	}
+
   	// }}
   	
   	// {{ Fecha de Compra del vehiculo

@@ -1,17 +1,16 @@
 package autos;
 
-public class Libre extends Estado{
+import autos.AutoStateFactory.Estado;
 
-	@Override
-	public Estado libre() {
-		
-		return this;
+public class Libre extends AbstractEstadoAuto{
+
+	public Libre(Auto auto) {
+		super(auto);
 	}
 
-	@Override
-	public Estado alquilado() {
-		Estado nuevoEstado=new Alquilado();
-		return nuevoEstado;
+	public void alquilado() {
+		getAuto().setEstado(Estado.ALQUILADO);
 	}
+	
 
 }

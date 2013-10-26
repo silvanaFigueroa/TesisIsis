@@ -24,7 +24,7 @@ import com.google.common.base.Objects;
 
 import alquiler.Alquiler;
 import autos.Auto;
-import autos.Auto.Estado;
+//import autos.Auto.Estado;
 import autos.Auto.Seguro;
 import autos.Auto.TipoCombustible;
 import marca.Marca;
@@ -46,12 +46,13 @@ public class AutoServicio extends AbstractFactoryAndRepository {
 		@Named("Kilometraje") int kms,
 		@Named("Capacidad Baul (lt)") int baul,
 		@Named("Tipo de Combustible") TipoCombustible combustible,
-		@Named("Estado de Alquiler") Estado estado,
+		//@Named("Estado de Alquiler") Estado estado,
 		@Named("Fecha de Compra") Date fechaCompra,
 		@Named("Compañía de Seguro")Seguro seguro) { 
 		final boolean activo=true;
+		//final AbstractEstadoAuto estado=new AbstractEstadoAuto();
 		final String ownedBy = currentUserName();
-		return elAuto(patente,marca,modelo,ano,categ,color,kms,baul,combustible,estado,fechaCompra,seguro,activo, ownedBy);
+		return elAuto(patente,marca,modelo,ano,categ,color,kms,baul,combustible,fechaCompra,seguro,activo, ownedBy);
 			     
 	}
 	// }}
@@ -68,10 +69,10 @@ public class AutoServicio extends AbstractFactoryAndRepository {
 		final int kms, 
 		final int baul,
 		final TipoCombustible combustible,
-		final Estado estado,
 		final Date fechaCompra,
 		final Seguro seguro,
 		final boolean activo,
+		//final AbstractEstadoAuto estado,
 		final String userName) 
 	{
 		
@@ -100,18 +101,13 @@ public class AutoServicio extends AbstractFactoryAndRepository {
 			auto.setKilometraje(kms);
 			auto.setCapacidadBaul(baul);
 			auto.setTipoCombustible(combustible);
-			auto.setEstado(estado);
+			//auto.setEstado(estado);
 			auto.setFechaCompra(fechaCompra);
 			auto.setSeguro(seguro);
 			auto.setActivo(activo);
 			auto.setOwnedBy(userName);
-	        
+	      // auto.setEstado(estado);
 			
-//			if(alquiler.getFechaDevolucion().getTime()<=fechaActual.getTime())
-//			{
-//				getContainer().informUser("Paso por estado liBre de alquileres");
-//				auto.setEstado(estado.LIBRE);
-//			}
 			
              persistIfNotAlready(auto);
 		
@@ -192,7 +188,7 @@ public class AutoServicio extends AbstractFactoryAndRepository {
         return allMatches(Auto.class, new Filter<Auto>() {
             @Override
             public boolean accept(final Auto t) {            	
-                return t.getActivo() && t.getEstado().equals(Estado.LIBRE);
+                return t.getActivo() ;//&& t.getEstado().equals(Estado.LIBRE);
             }
         });
     }    
@@ -204,7 +200,7 @@ public class AutoServicio extends AbstractFactoryAndRepository {
 		return allMatches(Auto.class, new Filter<Auto>() {
 		@Override
 		public boolean accept(final Auto t) {		
-			return t.getPatente().contains(auto) && t.getActivo() && t.getEstado().equals(Estado.LIBRE);
+			return t.getPatente().contains(auto) && t.getActivo(); //&& t.getEstado().equals(Estado.LIBRE);
 		}
 	  });				
 	}
