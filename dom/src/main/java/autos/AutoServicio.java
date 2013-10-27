@@ -72,7 +72,7 @@ public class AutoServicio extends AbstractFactoryAndRepository {
 		final Date fechaCompra,
 		final Seguro seguro,
 		final boolean activo,
-		//final AbstractEstadoAuto estado,
+		
 		final String userName) 
 	{
 		
@@ -101,7 +101,6 @@ public class AutoServicio extends AbstractFactoryAndRepository {
 			auto.setKilometraje(kms);
 			auto.setCapacidadBaul(baul);
 			auto.setTipoCombustible(combustible);
-			//auto.setEstado(estado);
 			auto.setFechaCompra(fechaCompra);
 			auto.setSeguro(seguro);
 			auto.setActivo(activo);

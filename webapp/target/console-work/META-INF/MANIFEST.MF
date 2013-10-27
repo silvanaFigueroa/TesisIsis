@@ -8,6 +8,6 @@ Build-Java: 1.6.0_35
 Build-Label: 1.0-SNAPSHOT
 Build-Maven: Maven 3.0.4
 Build-OS: Linux
-Build-Time: 20131025-1449
+Build-Time: 20131026-1754
 Build-User: silvana
 

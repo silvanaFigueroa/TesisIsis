@@ -60,7 +60,7 @@ public class Auto {
 	public Auto()
 	{
 		setEstado(Estado.LIBRE);
-		container.informUser("El auto se cargo en estado {0}"+getEstado().getClass().getSimpleName());
+		///container.informUser("El auto se cargo en estado {0}"+getEstado().getClass().getSimpleName());
 	}
 	@Named("Dominio")
 	// {{ Identification on the UI	
@@ -206,23 +206,42 @@ public class Auto {
  	//------------------------------------------------------------------
  	
  	 
- 	private IEstado estado;
- 	// {{ Estado de Alquiler
- 	@Programmatic
- 	public IEstado getEstado() {
-		return estado;
+// 	private IEstado estado;
+// 	// {{ Estado de Alquiler
+// 	@Programmatic
+// 	public IEstado getEstado() {
+//		return estado;
+//	}
+// 	@Programmatic
+//	public void setEstado(IEstado estado) {
+//		this.estado = estado;
+//	}
+// 	@Programmatic
+//	public void setEstado(Estado estado) {
+//		System.out.println(this.estado);
+//		this.estado = AutoStateFactory.buildState(estado, this);
+//		System.out.println("Despues del builder "+this.estado);
+//	}
+
+    private Estado estado;
+	
+	@Hidden
+	public Estado getEstado() 
+ 	{
+		
+		return this.estado;
+		
 	}
- 	@Programmatic
-	public void setEstado(IEstado estado) {
-		this.estado = estado;
-	}
- 	@Programmatic
-	public void setEstado(Estado estado) {
-		System.out.println(this.estado);
-		this.estado = AutoStateFactory.buildState(estado, this);
-		System.out.println("Despues del builder "+this.estado);
+	public void setEstado(Estado estado) 
+ 	{
+		
+		this.estado= estado;
+		
 	}
 
+ 	
+ 	
+ 	
   	// }}
   	
   	// {{ Fecha de Compra del vehiculo

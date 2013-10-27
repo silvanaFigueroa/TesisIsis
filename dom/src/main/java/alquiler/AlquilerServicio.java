@@ -23,7 +23,7 @@ import com.google.common.base.Objects;
 import alquiler.Alquiler;
 import alquiler.Alquiler.TipoPago;
 import autos.Auto;
-import autos.Auto.Estado;
+
 import autos.Libre;
 
 
@@ -75,7 +75,7 @@ public class AlquilerServicio extends AbstractFactoryAndRepository{
 		alquiler.setFechaDevolucion(fechaDev);
 		alquiler.setOwnedBy(userName);
 		alquiler.setActivo(true);
-	    auto.setEstado(Estado.ALQUILADO);
+	    //auto.setEstado(Estado.ALQUILADO);
 	
 		persistIfNotAlready(alquiler);
 		
@@ -94,7 +94,7 @@ public class AlquilerServicio extends AbstractFactoryAndRepository{
         return allMatches(Auto.class, new Filter<Auto>() {
             @Override
             public boolean accept(final Auto t) {            	          	
-                return t.getActivo() && t.getEstado().equals(Estado.LIBRE);            	          	
+                return t.getActivo();//&& t.getEstado().equals(Estado.LIBRE);            	          	
             }
         });
     }

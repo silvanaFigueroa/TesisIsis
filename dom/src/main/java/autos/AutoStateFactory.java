@@ -1,8 +1,10 @@
 package autos;
 
+import org.apache.isis.applib.annotation.Hidden;
+
 
 public class AutoStateFactory {
-
+	@Hidden
 	public enum Estado {
 		LIBRE, ALQUILADO;
 	}

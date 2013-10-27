@@ -20,7 +20,7 @@ import org.apache.isis.applib.util.TitleBuffer;
 import org.apache.isis.applib.annotation.MemberGroups;
 
 import autos.Auto;
-import autos.AutoConEstado;
+
 
 import cliente.Cliente;
 
@@ -125,7 +125,7 @@ public class Alquiler {
 		this.precio=precio;
 	}
 	
-	public AutoConEstado autoEstado;
+	//public AutoConEstado autoEstado;
 	
 	
 	// }}
